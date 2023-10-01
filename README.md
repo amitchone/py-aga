@@ -8,15 +8,15 @@ from aga import *
 
 
 @aga.add_arg
-def add(x: int, y: int = 2) -> int:
+def add(first: int, second: int = 2) -> int:
     """ A simple function to add two numbers
 
     Args:
-        x: The first number to add
-        y: The second number to add
+        first: One of the numbers to add
+        second: The other number to add
 
     Returns:
-        x added to y
+        first added to second
     """
 
     return x + y
@@ -24,22 +24,20 @@ def add(x: int, y: int = 2) -> int:
 
 if __name__ == '__main__':
     aga.bake()
-    print(aga.args.x, aga.args.y)
+    print(aga.args.first, aga.args.second)
 
 ```
 
 This simple file will result in the `x` and `y` arguments as shown below in the output of `python test.py -h`.
 
 ```
-❯ python test.py -h    
-usage: test.py [-h] y x
-
-positional arguments:
-  y           The second number to add
-  x           The first number to add
+❯ python test.py -h
+usage: test.py [-h] [-s] [-f]
 
 options:
-  -h, --help  show this help message and exit
+  -h, --help      show this help message and exit
+  -s , --second   The other number to add
+  -f , --first    One of the numbers to add
 ```
 
 As you can see, one must simply add the decorator `aga.add_arg` to a function and Aga will parse the function definition and create a documented command-line interface. 
