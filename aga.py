@@ -50,7 +50,9 @@ class Aga(object):
                 del defaults[0]
 
             self._parser.add_argument(
-                arg,
+                f'-{arg[0]}',
+                f'--{arg}',
+                metavar='',
                 type=f_inf.annotations[arg] if arg in f_inf.annotations.keys() else None,
                 default=default,
                 help=arg_docstrings[arg] if arg_docstrings is not None else None
