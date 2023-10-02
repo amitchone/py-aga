@@ -1,7 +1,7 @@
 [project]
-name = "py-aga"
-version = "0.1.0"
-description = "Lightweight native Python command-line interface builder"
+name = "py_aga"
+version = "0.1.3"
+description = "Lightweight native Python command-line interface argument builder"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [{name = "Adam Mitchell", email = "adamstuartmitchell@gmail.com"}]
@@ -10,13 +10,18 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13"
 ]
 
-requires-python = ">=3.0"
+requires-python = ">=3.9"
 
 [project.urls]
-Documentation = "https://github.com/amitchone/py-aga"
+Homepage = "https://github.com/amitchone/py-aga"
+Documentation = "https://github.com/amitchone/py-aga/blob/main/README.md"
 Changes = "https://github.com/amitchone/py-aga"
 
 [build-system]

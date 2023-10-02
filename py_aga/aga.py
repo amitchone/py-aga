@@ -55,7 +55,8 @@ class Aga(object):
                 metavar='',
                 type=f_inf.annotations[arg] if arg in f_inf.annotations.keys() else None,
                 default=default,
-                help=arg_docstrings[arg] if arg_docstrings is not None else None
+                help=arg_docstrings[arg] if arg_docstrings is not None else None,
+                action=argparse.BooleanOptionalAction if f_inf.annotations[arg] == bool else None
             )
 
         @functools.wraps(func)
