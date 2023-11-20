@@ -19,17 +19,19 @@ class Aga(object):
 
     @staticmethod
     def get_arg_docstrings(docstring: str, args: list) -> dict:
-        arg_descriptions = {}
+        args = [arg + ":" for arg in args]
+        args.append('Returns:')
 
-        pattern = r'({}):(.*?)(?={}|$)'.format('|'.join(
-            map(re.escape, args)), '|'.join(map(re.escape, ['Returns:', *args])))
+        ds_only_args = docstring.split("Args:")[1]
 
-        matches = re.findall(pattern, docstring, re.DOTALL)
+        args_dict = dict()
 
-        for idx, text in enumerate([match[1].strip() for match in matches if match[1].strip()]):
-            arg_descriptions[args[idx]] = text
+        for idx, arg in enumerate(args[:-1]):
+            val = ds_only_args.split(arg)[1].split(args[idx+1])[0]
+            val = val.replace('\n', ' ').replace('\t', ' ').strip()
+            args_dict[arg.replace(":", "")] = val
 
-        return arg_descriptions
+        return args_dict
 
     def add_arg(self, func) -> callable:
         f_inf = inspect.getfullargspec(func)
